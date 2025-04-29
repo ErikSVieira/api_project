@@ -19,7 +19,7 @@ def get_products(db: Session):
 
 
 def create_product(db: Session, product: ProductsInputDTO):
-    db_product = Product(**product.dict())
+    db_product = Product(**product.model_dump())
     db.add(db_product)
     db.commit()
     db.refresh(db_product)
@@ -29,7 +29,7 @@ def create_product(db: Session, product: ProductsInputDTO):
 def update_product(db: Session, id: int, product: ProductsInputDTO):
     db_product = get_product(db, id)
     if db_product:
-        for key, value in product.dict().items():
+        for key, value in product.model_dump().items():
             setattr(db_product, key, value)
         db.commit()
         db.refresh(db_product)
