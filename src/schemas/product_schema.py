@@ -24,5 +24,6 @@ class ProductsInputDTO(ProductBase):
 
 class ProductsOutputDTO(ProductBase):
     id: UUID
+    ative: bool
     created_at: datetime
     updated_at: datetime

@@ -1,6 +1,6 @@
 import uuid
 from datetime import UTC, datetime
-from sqlalchemy import Integer, String, Float, DateTime
+from sqlalchemy import Integer, String, Float, DateTime, Boolean
 from sqlalchemy.orm import Mapped, mapped_column
 from typing import Annotated
 from src.core.database import Base
@@ -25,6 +25,11 @@ class Product(Base):
     qty: Mapped[int] = mapped_column(Integer, nullable=False)
     buy_price: Mapped[float] = mapped_column(Float, nullable=False)
     sale_price: Mapped[float] = mapped_column(Float, nullable=False)
+    ative: Mapped[bool] = mapped_column(
+        Boolean,
+        nullable=False,
+        default=True,
+    )
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         default=lambda: datetime.now(UTC),
