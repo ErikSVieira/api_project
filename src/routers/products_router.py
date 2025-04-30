@@ -14,8 +14,13 @@ router = APIRouter(prefix="/products", tags=["Products"])
     response_model=list[ProductsOutputDTO],
     status_code=status.HTTP_200_OK,
 )
-def get_products(db: Session = Depends(get_db)):
-    return pc.get_products(db)
+def get_products(
+    db: Session = Depends(get_db),
+    limit: int = 10,
+    skip: int = 0,
+    ative: bool = True
+):
+    return pc.get_products(db, limit, skip, ative)
 
 
 @router.get(
