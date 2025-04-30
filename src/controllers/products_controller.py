@@ -2,9 +2,10 @@ from fastapi import HTTPException
 from sqlalchemy.orm import Session
 from src.models.product_model import Product
 from src.schemas.product_schema import ProductsInputDTO
+from uuid import UUID
 
 
-def get_product(db: Session, id: int):
+def get_product(db: Session, id: UUID):
     product = db.query(Product).filter(Product.id == id).first()
     if product is None:
         raise HTTPException(
@@ -26,7 +27,7 @@ def create_product(db: Session, product: ProductsInputDTO):
     return db_product
 
 
-def update_product(db: Session, id: int, product: ProductsInputDTO):
+def update_product(db: Session, id: UUID, product: ProductsInputDTO):
     db_product = get_product(db, id)
     if db_product:
         for key, value in product.model_dump().items():
@@ -36,7 +37,7 @@ def update_product(db: Session, id: int, product: ProductsInputDTO):
     return db_product
 
 
-def delete_product(db: Session, id: int):
+def delete_product(db: Session, id: UUID):
     db_product = get_product(db, id)
     if db_product:
         db.delete(db_product)
