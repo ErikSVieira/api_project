@@ -11,18 +11,20 @@ api_project/
 ├── src/
 │   ├── __init__.py
 │   ├── main.py              # Arquivo principal da aplicação FastAPI
+│   ├── controllers/
+│   │   ├── product_controller.py       # Lógica de negócios para processar requisições HTTP
 │   ├── models/
 │   │   ├── __init__.py
-│   │   ├── product.py       # Modelo Pydantic para produtos
+│   │   ├── product_model.py       # Modelo Pydantic para produtos
 │   ├── routes/
 │   │   ├── __init__.py
-│   │   ├── product.py       # Rotas da API para operações CRUD
-│   ├── database/
+│   │   ├── product_router.py       # Rotas da API para operações CRUD
+│   ├── core/
 │   │   ├── __init__.py
 │   │   ├── database.py      # Configuração do banco de dados (ex.: SQLite)
 │   ├── schemas/
 │   │   ├── __init__.py
-│   │   ├── product.py       # Esquemas Pydantic para validação
+│   │   ├── product_schema.py       # Esquemas Pydantic para validação
 ├── docs/
 │   ├── openapi.json         # Arquivo de especificação OpenAPI
 ├── tests/
