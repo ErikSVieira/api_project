@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from uuid import UUID
 
 from datetime import datetime
@@ -14,9 +14,6 @@ class ProductBase(BaseModel):
     buy_price: float
     sale_price: float
 
-    class Config:
-        from_attributes = True
-
 
 class ProductsInputDTO(ProductBase):
     pass
@@ -27,3 +24,4 @@ class ProductsOutputDTO(ProductBase):
     ative: bool
     created_at: datetime
     updated_at: datetime
+    model_config = ConfigDict(from_attributes=True)
